@@ -2,22 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e882c046-aa3d-41c3-bdc2-b18f323b9b3c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ABC171/A.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ABC171/B.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ABC171/C.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ABC171/C_2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ABC171/D.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ABC171/E.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ABC171/F.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ABC171/scribble.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABC174/A.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABC174/B.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABC174/C.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABC174/C_2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABC174/D.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABC174/E.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABC174/F.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ABC174/scribble.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/ABC.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ABC.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ABC171/C_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/ABC171/C_2.py" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -29,7 +34,51 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/ABC171/C_2.py" />
+        <option value="$PROJECT_DIR$/ABC174/A.py" />
+        <option value="$PROJECT_DIR$/ABC174/B.py" />
+        <option value="$PROJECT_DIR$/ABC174/D.py" />
+        <option value="$PROJECT_DIR$/ABC174/scribble.py" />
+        <option value="$PROJECT_DIR$/ABC174/E.py" />
+        <option value="$PROJECT_DIR$/ABC174/C.py" />
+        <option value="$PROJECT_DIR$/ABC174/F.py" />
+        <option value="$PROJECT_DIR$/ABC174/C_2.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="78" />
+    <option name="width" value="901" />
+    <option name="height" value="1047" />
+  </component>
   <component name="ProjectId" id="1SYi6aNSqNvq2EZzwauIyILQMmb" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ABC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ABC" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ABC" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ABC" type="462c0819:PsiDirectoryNode" />
+              <item name="ABC174" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -48,8 +97,20 @@
       <recent name="D:\program\PyCharm\AtCoder\ABC\ABC170" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.C">
-    <configuration name="A" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.C_2">
+    <configuration name="C (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ABC" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -57,11 +118,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ABC171" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ABC174" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ABC171/A.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ABC174/C.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -70,7 +131,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="B" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="C_2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ABC" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -78,11 +139,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ABC171" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ABC174" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ABC171/B.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ABC174/C_2.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -91,7 +152,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="C" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="D" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ABC" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -99,11 +160,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ABC171" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ABC174" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ABC171/C.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ABC174/D.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -112,7 +173,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="D" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="E" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ABC" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -120,11 +181,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ABC171" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ABC174" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ABC171/D.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ABC174/E.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -133,7 +194,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="scribble" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="scribble" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="ABC" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -141,11 +202,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ABC171" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/ABC174" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ABC171/scribble.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ABC174/scribble.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -156,11 +217,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.C" />
-        <item itemvalue="Python.D" />
+        <item itemvalue="Python.C_2" />
+        <item itemvalue="Python.C (1)" />
+        <item itemvalue="Python.E" />
         <item itemvalue="Python.scribble" />
-        <item itemvalue="Python.B" />
-        <item itemvalue="Python.A" />
+        <item itemvalue="Python.D" />
       </list>
     </recent_temporary>
   </component>
@@ -176,6 +237,28 @@
       <updated>1571746755420</updated>
     </task>
     <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="78" y="0" width="901" height="1047" extended-state="0" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" weight="0.24913093" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info active="true" anchor="bottom" x="1050" y="398" width="738" height="459" id="Run" order="2" type="WINDOWED" visible="true" weight="0.32932165" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Python Console" order="10" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
   </component>
   <component name="WindowStateProjectService">
     <state width="714" height="361" key="GridCell.Tab.0.bottom" timestamp="1592813503533">
@@ -194,5 +277,82 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="714" height="361" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1592813503533" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/ABC171/F.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ABC174/A.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ABC174/B.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="11" lean-forward="true" selection-start-line="1" selection-start-column="11" selection-end-line="1" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ABC174/D.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ABC174/E.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ABC171/C_2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ABC174/F.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ABC174/scribble.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ABC174/C_2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" lean-forward="true" selection-end-line="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ABC174/C.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="18" selection-start-line="27" selection-start-column="18" selection-end-line="27" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

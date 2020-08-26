@@ -5,7 +5,7 @@ H, W, M = map(int, sys.stdin.readline().strip().split())
 h = [0] * H
 w = [0] * W
 
-g = [[False] * W for _ in range(H)]
+# g = [[False] * W for _ in range(H)]
 S = set()
 for _ in range(M):
     Th, Tw = map(int, sys.stdin.readline().strip().split())

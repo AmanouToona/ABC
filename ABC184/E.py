@@ -40,6 +40,7 @@ while que:
                 if dist[hv][wv] == inf:
                     dist[hv][wv] = du + 1
                     heapq.heappush(que, (du + 1, hv, wv))
+        warp[table[hu][wu]] = []
 
     for x, y in [[0, 1], [0, -1], [1, 0], [-1, 0]]:
         hv = hu + x

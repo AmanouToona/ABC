@@ -14,8 +14,13 @@ int main() {
     map<char, vector<pair<int, int>>> warp;
     for (int h = 0; h < H; h++) {
         for (int w = 0; w < W; w++) {
-            if (isalpha(table[h][w])) {
-                warp[table[h][w]].push_back((h, w));
+            if (isalpha(table[h][w]) && islower(table[h][w])) {
+                if (warp.count(table[h][w] == 0)) {
+                    warp[table[h][w]].push_back((h, w));
+                }
+                else {
+                    
+                }
             }
         }
     }

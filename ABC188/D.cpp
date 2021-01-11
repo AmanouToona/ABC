@@ -1,34 +1,28 @@
 # include <bits/stdc++.h>
 using namespace std;
 
-// long day = 1000000000 + 1;
-long long day = 536870911;
-
-vector<long long> cusum(day);
+// imos 法ではサイズが大きすぎる
 
 int main() {
-    int N, C;
+    long long N, C;
     cin >> N >> C;
 
-    cout << cusum.max_size();
-
-    int a, b, c;
+    vector<pair<int, int>> event;
     for (int i = 0; i < N; i++) {
+        int a, b, c;
         cin >> a >> b >> c;
-        cusum[a] += c;
-        cusum[b + 1] -= c;
+        event.emplace_back(a - 1, c);
+        event.emplace_back(b, -c);
     }
 
-    for (long i = 0; i < day; i++) {
-        cusum[i + 1] += cusum[i];
+    sort(event.begin(), event.end());
+
+    long long cost = 0, ans = 0, left_day = event[0].first;
+    for (auto [x, y]: event) {
+        ans += min(cost, C) * (x - left_day);
+        cost += y;
+        left_day = x;
     }
-
-    long long ans = 0;
-    for (long i = 0; i < day; i++) {
-        if (cusum[i] <= C) {ans += cusum[i];}
-        else {ans += C;};
-    };
-
     cout << ans << endl;
 
 }

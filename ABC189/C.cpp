@@ -5,23 +5,27 @@ int main() {
     int N;
     cin >> N;
 
-    deque<pair<int, int>> que;  // height, masu
+    deque<pair<int, int>> que;  // height, i
 
-    int a = 0, A;
-    int left, right, score;
-    que.push_back(make_pair(1, 0));
+    int A;
+    int score = 0;
     for (int i = 0; i < N; i++) {
         cin >> A;
-        if (A < a) {
-            for (int h = A; h > a; a--){
-                while(h < que.back().first()) {
-
-                }
+        int left = i;
+        while(!que.empty() && que.back().first > A) {
+                int box = que.back().first * (i - que.back().second);
+                score = max(score, box);
+                left = que.back().second;
+                que.pop_back();
             }
-        }
-
-        que.push_back(make_pair(a, i));
-        a = A;
+        que.push_back(make_pair(A, left));
     }
 
+    while(!que.empty()) {
+        int box = que.back().first * (N - que.back().second);
+        score = max(score, box);
+        que.pop_back();
+    }
+
+    cout << score << endl;
 }

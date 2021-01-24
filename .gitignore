@@ -1,4 +1,9 @@
 .idea/
 .vscode/
 *.exe
+<<<<<<< HEAD
 trial.py
+=======
+trial.py
+/venv/
+>>>>>>> origin/master

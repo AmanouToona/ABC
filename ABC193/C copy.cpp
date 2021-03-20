@@ -20,10 +20,10 @@ int main() {
     map<ll, bool> mp;
     ll count = 0;
 
-    for (ll a = 2; a <= sqrt(N); a++) {
-        for (ll b = 2; b <= log2(N); b++) {
+    for (long double a = 2; a <= sqrt(N); a++) {
+        for (long double b = 2; b <= log2(N); b++) {
             if (pow_ll(a, b) > N) break;
-            ll ab = pow_ll(a, b);
+            long double ab = pow_ll(a, b);
 
             if (ab > N) break;
 

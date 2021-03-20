@@ -19,7 +19,7 @@ int main() {
     int N;
     cin >> N;
     vector<int> A(N);
-    int a_sum = 0;
+    ll a_sum = 0;
     for (int i = 0; i < N; i++) {
         cin >> A[i];
         a_sum += A[i];
@@ -32,12 +32,12 @@ int main() {
     }
 
     for (int i = 0; i < N; i++) {
-        ans += ((N - i - 1) + (i - 1 + 1)) * A[i] * A[i];
+        ans += (N - 1) * 1LL * A[i] * A[i];
+        // cout << typeid(ans).name() << endl;
     }
 
     cout << ans << endl;
     return 0;
-
 
 }
 

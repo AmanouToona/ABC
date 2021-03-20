@@ -3,11 +3,10 @@ using namespace std;
 using ll = long long;
 
 const int inf=1001001001;
-vector<vector<int>> d(2000, vector<int>(2000, inf));
 int main() {
     int N, M;
     cin >> N >> M;
-    // vector<vector<int>> d(N, vector<int>(N, inf));
+    vector<vector<int>> d(N, vector<int>(N, inf));
 
     for (int i = 0; i < M; i++) {
         int a, b, c;
@@ -34,10 +33,3 @@ int main() {
     }
 }
 
-/*
-2000 4
-1 2 5
-2 3 10
-3 1 15
-4 3 20
-*/

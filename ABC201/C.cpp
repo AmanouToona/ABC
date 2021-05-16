@@ -32,7 +32,7 @@ int main() {
     }
 
     int ans = 0;
-    for (int i = 0; i < 1000; i++) {
+    for (int i = 0; i < 10000; i++) {
         stringstream lock_ss;
         lock_ss  << setfill('0') << setw(4) << i;
         string lock;
@@ -41,7 +41,7 @@ int main() {
         bool can = true;
         // 禁止文字のチェック
         for (int j = 0; j < 10; j++) {
-            string check = to_string(j);
+            char check = '0' + j;
             if (S[j] == 'x' && lock.find(check) != string::npos){
                 can = false;
                 break;
@@ -50,8 +50,8 @@ int main() {
 
         // 含有文字の確認
         for (int j = 0; j < 10; j++) {
-            string check = to_string(j);
-            if (S[j] == 'o' && lock.find(check) != string::npos) {
+            char check = '0' + j;
+            if (S[j] == 'o' && lock.find(check) == string::npos) {
                 can = false;
                 break;
             }

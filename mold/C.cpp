@@ -17,3 +17,4 @@ int const INF = INT_MAX;
 
 int main() {
 
+}

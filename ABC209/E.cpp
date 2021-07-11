@@ -15,52 +15,12 @@ ll pow_ll(ll x, ll y) {
 int const INF = INT_MAX;
 
 
-void dfs(vector<int> &judge, int u, vector<vector<int>> & tree) {
-    if (judge[u] != -1) {
-        return;
-    }
-
-
-    if (tree[u].size() == 0) {
-        judge[u] == 0;
-        return; 
-    }
-
-    if (tree[u].size() == 1 && tree[u][0] == u) {
-        judge[u] =2;
-        return;
-    }
-
-    bool lose = false;
-    bool cycle = false;
-    for (int v: tree[u]) {
-        if (v == u) {
-            cycle = true;
-            continue;
-        }
-        dfs(judge, v, tree);
-        if (judge[v] == 0) {
-            lose = true;
-        }
-    }
-
-    if (lose) {
-        if (cycle) judge[u] = 2;
-        else judge[u] = 1;
-    } else {
-        judge[u] = 0;
-    }
-
-}
- 
-
-
 int main() {
     int N;
     cin >> N;
     vector<string> S(N);
 
-    map<string, vector<int>> m;
+    map<string, vector<int>> m;  // 頭3文字を key として単語番号を保存
     for (int i = 0; i < N; i++) {
         cin >> S[i];
 
@@ -69,45 +29,66 @@ int main() {
 
     }
 
-    vector<vector<int>> graph(N);
-    vector<bool> used(N, false);
+    vector<vector<int>> to(N);  // 逆辺の保存
+    vector<int> deg(N);  // 残り次数
+    for (int i = 0; i < N; i++) {
+        string b = S[i].substr(S[i].size() - 3, S[i].size());
+
+        for (int p: m[b]) {
+            to[p].push_back(i);
+            deg[i]++;
+        }
+    }
+
+    vector<int> ans(N);  // word を言った方が  -1: 負け, 0: 不明 or 引き分け, 1: 勝ち
     queue<int> q;
 
     for (int i = 0; i < N; i++) {
-        if (used[i]) continue;
+        if (deg[i] == 0) {
+            ans[i] = 1;
+            q.push(i);
+        }
+    }
 
-        q.push(i);
-        used[i] = true;
+    while (q.size()) {
+        int v = q.front();
+        q.pop();
 
-        while (!q.empty()) {
-            int u = q.front();
-            q.pop();
-
-            int s = S[u].size();
-            string key = S[u].substr(s - 3, s);
-
-            for (auto v: m[key]) {
-                if (used[v] && v != u) continue;
-                
-                used[v] = true;
-                graph[u].push_back(v);
-                if (v != u) q.push(v);
+        if (ans[v] == 1) {
+            for (int u : to[v]) {
+                if (ans[u] != 0) continue;
+                ans[u] = -1;
+                q.push(u);
+            }
+        } else {
+            for (int u: to[v]) {
+                if (ans[u] != 0) continue;
+                deg[u]--;
+                if (deg[u] == 0) {
+                    ans[u] = 1;
+                    q.push(u);
+                }
             }
         }
     }
 
-    vector<int> judge(N, -1);
-    for (int i = 0; i < N; i++) {
-        dfs(judge, i, graph);
-    }
 
     for (int i = 0; i < N; i++) {
-        if (judge[i] == 0) {
+        if (ans[i] == 1) {
             cout << "Takahashi" << endl;
-        } else if (judge[i] == 1) {
+        } else if (ans[i] == -1) {
             cout << "Aoki" << endl;
         } else {
             cout << "Draw" << endl;
         }
     }
+
 }
+
+/*
+3
+aaabbb
+bbbccc
+cccaaa
+*/
+

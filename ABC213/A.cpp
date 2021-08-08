@@ -14,12 +14,11 @@ ll pow_ll(ll x, ll y) {
 
 int const INF = INT_MAX;
 
-ll const MOD = 998244353;
 
 int main() {
-    int N, M, K;
-    cin >> N >> M >> K;
+    int A, B;
+    cin >> A >> B;
 
-    
-
+    int ans = A ^ B;
+    cout << ans << endl;
 }

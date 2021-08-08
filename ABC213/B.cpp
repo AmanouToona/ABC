@@ -14,12 +14,21 @@ ll pow_ll(ll x, ll y) {
 
 int const INF = INT_MAX;
 
-ll const MOD = 998244353;
 
 int main() {
-    int N, M, K;
-    cin >> N >> M >> K;
+    int N;
+    cin >> N;
 
-    
+    vector<pair<int, int>> A(N);
+    for (int i = 0; i < N; i++) {
+        int a;
+        cin >> a;
+        A[i] = make_pair(a, i);
+    }
 
+    sort(A.begin(), A.end());
+
+    auto [_, ans] = A[N - 2];
+
+    cout << ans + 1 << endl;
 }

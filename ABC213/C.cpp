@@ -14,43 +14,37 @@ ll pow_ll(ll x, ll y) {
 
 int const INF = INT_MAX;
 
+vector<int> compress(vector<int> A) {
+    vector<int> A2 = A;
+
+    sort(A2.begin(), A2.end());
+    map<int, int> mp;
+    for (int a: A2) {
+        if (mp.count(a) == 0) mp[a] = mp.size();
+    }
+
+    for (int i = 0; i < A.size(); i++) {
+        A[i] = mp[A[i]];
+    }
+
+    return A;
+}
+
 
 int main() {
     int H, W, N;
     cin >> H >> W >> N;
 
-    vector<pair<int, int>> A, B;
+    vector<int> A(N), B(N);
     for (int i = 0; i < N; i++) {
-        int a, b;
-        cin >> a >> b;
-
-        A.push_back(make_pair(a, i));
-        B.push_back(make_pair(b, i));
+        cin >> A[i] >> B[i];
     }
 
-    sort(A.begin(), A.end());
-    sort(B.begin(), B.end());
-
-    map<int, int> ma, mb;
-    for (int i = 0; i < N; i++) {
-        int a = A[i].first;
-        if (ma.count(a) == 0) ma[a] = ma.size();
-
-        int b = B[i].first;
-        if (mb.count(b) == 0) mb[b] = mb.size();
-    }
-
-    vector<vector<int>> ans(N, vector<int>(2, 0));
-    for (int i = 0; i < N; i++) {
-        auto[a, num_a] = A[i];
-        ans[num_a][0] = ma[a] + 1;
-
-        auto[b, num_b] = B[i];
-        ans[num_b][1] = mb[b] + 1;
-    }
+    A = compress(A);
+    B = compress(B);
 
     for (int i = 0; i < N; i++) {
-        cout << ans[i][0] << " " << ans[i][1] << endl;
+        cout << A[i] + 1<< " " << B[i] + 1 << endl;
     }
 
 }

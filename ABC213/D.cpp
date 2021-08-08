@@ -44,7 +44,7 @@ int main() {
         road[b].push_back(a);
     }
 
-    for (int i = 0; i < N - 1; i++) {
+    for (int i = 0; i < N; i++) {
         sort(road[i].begin(), road[i].end());
     }
 

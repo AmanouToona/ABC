@@ -64,45 +64,26 @@ int main() {
     int N, M;
     cin >> N >> M;
 
-    vector<pair<int, pair<int, int>>> g;
-    map<pair<int, int>, int> edge; // 多重辺の管理用
+    vector<pair<ll, pair<int, int>>> g;
     for (int i = 0; i < M; i++) {
         int A, B, C;
         cin >> A >> B >> C;
         A--; B--;
-        g.push_back(make_pair(-C, make_pair(A, B)));
-
-        if (A > B) {
-            edge[make_pair(B, A)]++;
-
-        } else {
-            edge[make_pair(A, B)]++;
-        }
+        g.push_back(make_pair(C, make_pair(A, B)));
     }
 
     sort(g.begin(), g.end());
     
     UnionFind uf(N);
 
-    ll ans = 0;
-    
+    ll ans = 0LL;
+    bool can = false;
     for (int i = 0; i < M; i++) {
-        if (g[i].first > 0) break;
-        int A = g[i].second.first;
-        int B = g[i].second.second;
+        int A = g[i].second.first, B = g[i].second.second;
+        uf.unite(A, B);
 
-        if (A > B) {
-            int temp = A;
-            A = B;
-            B = temp;
-        }
-
-        edge[make_pair(A, B)] --;
-        if (edge[make_pair(A, B)] == 0) {
-            uf.unite(A, B);
-        }
-        if (uf.size(0) == N) break;
-        ans -= g[i].first;
+        if (can && g[i].first > 0) ans += g[i].first;
+        if (uf.size(0) == N) can = true;
     }
 
     cout << ans << endl;

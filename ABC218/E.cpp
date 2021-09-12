@@ -77,13 +77,11 @@ int main() {
     UnionFind uf(N);
 
     ll ans = 0LL;
-    bool can = false;
     for (int i = 0; i < M; i++) {
-        int A = g[i].second.first, B = g[i].second.second;
-        uf.unite(A, B);
+        int A = g[i].second.first, B = g[i].second.second, C = g[i].first;
+        if (uf.same(A, B) && C > 0) ans += C;
 
-        if (can && g[i].first > 0) ans += g[i].first;
-        if (uf.size(0) == N) can = true;
+        uf.unite(A, B);
     }
 
     cout << ans << endl;

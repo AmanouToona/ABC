@@ -32,55 +32,44 @@ int main() {
         G[v].push_back(u);
     }
 
-    vector<int> p(9, 8);
+    vector<int> P(9, 8);
     for (int i = 0; i < 8; i++) {
-        int pp;
-        cin >> pp;
-        pp --;
-        p[pp] = i;
+        int p;
+        cin >> p;
+        p--;
+        P[p] = i;
     }
 
+    auto compare = [](pair<int, vector<int>> const&l, pair<int, vector<int>> const&r) -> bool {return l.first > r.first;};
+    priority_queue<pair<int, vector<int>>, vector<pair<int, vector<int>>>, decltype(compare)> q(compare);
+    q.push(make_pair(0, P));
+    fp[P]++;
 
-    priority_queue<pair<int, vector<int>>> q;
-    q.push(make_pair(0, p));
-
-    fp[p]++;
-
-    while(!q.empty() > 0) {
-        auto [c, pp] = q.top();
+    int ans = INF;
+    while(!q.empty()) {
+        auto [c, p] = q.top();
         q.pop();
 
-        if (pp == goal) {
+        if (p == goal) {
             ans = c;
             break;
         }
 
-        int empty = 0;
-        for (int i = 0; i < 9; i++) {
-            if (pp[i] == 8) {
-                empty = i;
-                break;
-            }
+        int v;
+        for (int i = 0; i <= 8; i++) {
+            if (p[i] == 8) v = i;
         }
 
-        for (auto u: G[empty]) {
-            swap(pp[u], pp[empty]);
-            if (fp[pp] >= 1) {
-                swap(pp[u], pp[empty]);
-                continue;
-            }
-            q.push(make_pair(c + 1, pp));
-            fp[pp]++;
+        for (int u: G[v]) {
+            vector<int> p_nxt = p;
+            swap(p_nxt[u], p_nxt[v]);
+            if (fp.count(p_nxt) != 0) continue;
 
-            swap(pp[u], pp[empty]);
-
+            q.push(make_pair(c + 1, p_nxt));
+            fp[p_nxt]++;
         }
     }
 
-
-    if (ans == INF) {
-        cout << -1 << endl;
-    } else {
-        cout << ans << endl;
-    }
+    if (ans == INF) cout << -1 << endl;
+    else cout << ans << endl;
 }

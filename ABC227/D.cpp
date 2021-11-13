@@ -45,7 +45,7 @@ int main() {
     for (int i = 0; i < N; i++) cin >> A[i];
     sort(A.begin(), A.end(), greater<ll>());
 
-    ll left = 0, right = 1000000000000;
+    ll left = 0, right = LLONG_MAX;
     while (right - left > 1) {
         ll mid = (left + right) / 2;
         if (judge(mid, K, A)) {

@@ -16,15 +16,17 @@ int const INF = INT_MAX;
 
 
 ll search(ll N, ll i) {
-    ll left = 1;
-    ll right = LLONG_MAX;
+    ll left = i;
+    ll right = N + 1;
 
     while (right - left > 1) {
         ll mid = left + (right - left) / 2;
-        if (N / mid < i) right = mid;
+        if (N / mid < N / i) right = mid;
         else left = mid;
     }
+
     return left;
+
 }
 
 
@@ -35,11 +37,9 @@ int main() {
     ll i = 1;
     ll ans = 0;
     while (i <= N) {
-        int temp = search(N, N / i);
-
+        ll temp = search(N, i);
         ans += N / i * (temp - i + 1);
         i = temp + 1;
-        cout << i << endl;
     }
 
     cout << ans << endl;

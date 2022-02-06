@@ -27,31 +27,17 @@ int main() {
 
         bool carry = false;
 
-        if (a > s) can = false;
-        for (int i = 0; i < 61; i++) {
-            bool ba = (a >> i) & 1;
-            bool bs = (s >> i ) & 1;
-
-            if (ba == 1) {
-                if (bs == 0 && carry) can = false;
-                if (bs == 1 && !carry) can = false;
-                carry = true;
-                continue;
-            }
-
-            if (carry) {
-                if (bs) {carry = false;}
-                else {carry = true;}
-                continue;
-            }
-
-            carry = false;
+        if (s - 2 * a < 0) {
+            cout << "No" << endl;
+            continue;
         }
 
-        if (can) {
+        if (((s - 2 * a) & a) == 0) {
             cout << "Yes" << endl;
         } else {
             cout << "No" << endl;
         }
+
+
     }
 }

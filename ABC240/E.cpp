@@ -13,67 +13,55 @@ ll pow_ll(ll x, ll y) {
 }
 
 int const INF = INT_MAX;
+int leaf_no = 1;
 
-void solve(vector<pair<int, int>> &dp, vector<vector<int>> &t, int u) {
-    if (dp[u].first != 0 && dp[u].second != 0) return;
+void dfs(vector<vector<int>> &g, int u, int p, vector<pair<int, int>> &dp) {
+    if (g[u].size() == 1 && p != -1) {
+        dp[u] = make_pair(leaf_no, leaf_no);
+        leaf_no++;
+        return;
+    }
 
-    int l = INF, r = 0;
-    for (int v : t[u]) {
-        solve(dp, t, v);
-        l = min(dp[v].first, l);
-        r = max(dp[v].second, r);
+    for (int v : g[u]) {
+        if (v == p) continue;
+        dfs(g, v, u, dp);
+    }
+    return;
+}
+
+void dfs2(vector<vector<int>> &g, vector<pair<int, int>> &dp, int u, int p) {
+    if (dp[u].first == dp[u].second) return;
+
+    int l = INF, r = -1;
+    for (int v : g[u]) {
+        if (v == p) continue;
+        dfs2(g, dp, v, u);
+        l = min(l, dp[v].first);
+        r = max(r, dp[v].second);
     }
 
     dp[u] = make_pair(l, r);
-    return;
 }
 
 int main() {
     int N;
     cin >> N;
 
-    vector<vector<int>> tree(N, vector<int>());
+    vector<vector<int>> g(N, vector<int>());
     for (int i = 0; i < N - 1; i++) {
         int u, v;
         cin >> u >> v;
         u--;
         v--;
-        tree[u].push_back(v);
-        tree[v].push_back(u);
-    }
-
-    vector<vector<int>> t(N, vector<int>());
-    vector<bool> f(N, false);
-    queue<int> q;
-    f[0] = true;
-    for (int i = 0; i < tree[0].size(); i++) {
-        q.push(tree[0][i]);
-        t[0].push_back(tree[0][i]);
-        f[tree[0][i]] = true;
+        g[u].push_back(v);
+        g[v].push_back(u);
     }
 
     vector<pair<int, int>> dp(N, pair<int, int>());
-    int leaf_no = 1;
-    while (!q.empty()) {
-        int u = q.front();
-        q.pop();
+    for (int i = 0; i < N; i++) dp[i] = make_pair(INF, -1);
+    dfs(g, 0, -1, dp);
+    dfs2(g, dp, 0, -1);
 
-        bool leaf = true;
-        for (int i = 0; i < tree[u].size(); i++) {
-            int v = tree[u][i];
-            if (f[v]) continue;
-            leaf = false;
-            q.push(v);
-            f[v] = true;
-            t[u].push_back(v);
-        }
-        if (leaf) {
-            dp[u] = make_pair(leaf_no, leaf_no);
-            leaf_no++;
-        }
-    }
-
-    solve(dp, t, 0);
     for (int i = 0; i < N; i++) {
         cout << dp[i].first << " " << dp[i].second << endl;
     }

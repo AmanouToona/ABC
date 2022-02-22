@@ -18,12 +18,9 @@ int main() {
     ll X;
     cin >> X;
 
-    ll ans;
-    if (X > 0) {
-        ans = floor(X / 10);
+    if (X < 0 && X % 10 != 0) {
+        cout << X / 10 - 1 << endl;
     } else {
-        ans = floor(1.0 * X / 10);
+        cout << X / 10 << endl;
     }
-
-    cout << ans << endl;
 }

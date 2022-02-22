@@ -1,47 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 using ll = long long;
-
-class UnionFind {
-    vector<int> p, rank, member_size;
-
-   public:
-    UnionFind(int n) : p(n), rank(n, 0), member_size(n, 1) {
-        for (int i = 0; i < n; i++) {
-            p[i] = i;
-        }
-    }
-
-    int find(int x) {
-        if (p[x] == x) return x;
-        p[x] = find(p[x]);
-        return p[x];
-    }
-
-    void unite(int x, int y) {
-        x = find(x);
-        y = find(y);
-
-        if (x == y) return;
-
-        if (rank[x] <= rank[y]) {
-            p[x] = y;
-            member_size[y] += member_size[x];
-        } else {
-            p[y] = x;
-            member_size[x] += member_size[y];
-        }
-
-        if (rank[x] == rank[y]) {
-            rank[y]++;
-        }
-        return;
-    }
-
-    int same(int x, int y) { return find(x) == find(y); }
-
-    int size(int x) { return member_size[find(x)]; }
-};
+using vi = vector<int>;
+using vvi = vector<vector<int>>;
 
 ll pow_ll(ll x, ll y) {
     ll ret = 1;
@@ -55,43 +16,54 @@ ll pow_ll(ll x, ll y) {
 
 int const INF = INT_MAX;
 
+void dfs(vvi &t, int u, int p, vvi &ans, vi &x) {
+    if (t[u].size() == 1 && p != -1) {
+        ans[u].push_back(x[u]);
+        return;
+    }
+
+    for (int v : t[u]) {
+        if (v == p) continue;
+        dfs(t, v, u, ans, x);
+
+        for (int vx : ans[v]) {
+            ans[u].push_back(vx);
+        }
+    }
+
+    ans[u].push_back(x[u]);
+
+    sort(ans[u].rbegin(), ans[u].rend());
+    if (ans[u].size() > 20) ans[u].resize(20);
+    return;
+}
+
 int main() {
     int N, Q;
     cin >> N >> Q;
 
-    vector<int> X(N);
+    vi X(N);
     for (int i = 0; i < N; i++) cin >> X[i];
 
-    UnionFind uf(N);
+    vvi t(N, vi());
     for (int i = 0; i < N - 1; i++) {
-        int A, B;
-        cin >> A >> B;
-        A--;
-        B--;
-        uf.unite(A, B);
+        int a, b;
+        cin >> a >> b;
+        a--;
+        b--;
+        t[a].push_back(b);
+        t[b].push_back(a);
     }
 
-    map<int, int> m;
-    for (int i = 0; i < N; i++) {
-        int p = uf.find(i);
-        if (m.count(p) == 0) m[p] = m.size();
-    }
-
-    vector<vector<int>> precalc(m.size(), vector<int>());
-    for (int i = 0; i < N; i++) {
-        precalc[m.at(uf.find(i))].push_back(X[i]);
-    }
-
-    for (int i = 0; i < precalc.size(); i++) {
-        sort(precalc[i].begin(), precalc[i].end(), greater<int>());
-    }
+    // K の制約から サイズはN * 20以下
+    vvi ans(N, vi());
+    dfs(t, 0, -1, ans, X);
 
     for (int i = 0; i < Q; i++) {
         int V, K;
         cin >> V >> K;
-
         V--;
         K--;
-        cout << precalc[m.at(uf.find(V))][K] << endl;
+        cout << ans[V][K] << endl;
     }
 }

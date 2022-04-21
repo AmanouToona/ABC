@@ -55,7 +55,7 @@ int main() {
                 if (vx >= N || vx < 0) break;
                 if (vy >= N || vy < 0) break;
                 if (S[vx][vy] == '#') break;
-                if (fp[vx][vy] < INF) break;
+                if (fp[vx][vy] < fp[x][y] + 1) break;
                 fp[vx][vy] = fp[x][y] + 1;
                 q.push(make_pair(vx, vy));
             }

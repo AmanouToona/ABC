@@ -2,11 +2,15 @@
 using namespace std;
 using ll = long long;
 
+int const mod = 998244353;
+
 ll pow_ll(ll x, ll y) {
     ll ret = 1;
     while (y > 0) {
         if (y & 1) ret *= x;
+        ret %= mod;
         x *= x;
+        x %= mod;
         y >>= 1;
     }
     return ret;
@@ -35,6 +39,7 @@ int count_loop(vector<int> & idx) {
 
             if (fp[v]) break;
             fp[v] = true;
+            q.push(v);
             loop++;
         }
 
@@ -56,9 +61,9 @@ int main() {
     do {
         int loop = count_loop(idx);
         loop ++;
-        ans += pow_ll()
+        ans += pow_ll(loop, K);
 
     } while(std::next_permutation(idx.begin(), idx.end()));
      
-
+    cout << ans << endl;
 }

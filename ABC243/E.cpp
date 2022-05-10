@@ -16,67 +16,43 @@ ll pow_ll(ll x, ll y) {
 
 int const INF = INT_MAX;
 
-void printPath1_aux(int begin, int end, vector<vector<int>> &via,
-                    vector<vector<bool>> &e2) {
-    if (via[begin][end] == begin) {
-        if (begin != end) {
-            e2[begin][end] = true;
-            e2[end][begin] = true;
-        };
-        return;
-    }
-
-    printPath1_aux(begin, via[begin][end], via, e2);
-    printPath1_aux(via[begin][end], end, via, e2);
-};
-
 int main() {
     int N, M;
     cin >> N >> M;
 
-    vector<vector<int>> dp(N, vector<int>(N, INF));
-    vector<vector<bool>> e(N, vector<bool>(N, false));
-    vector<int> u(N, -1);
+    vector<vector<ll>> dp(N, vector<ll>(N, INF));
+    for (int i = 0; i < N; i++) dp[i][i] = 0;
 
-    for (int i = 0; i < N; i++) {
-        int A, B, C;
+    vector<tuple<int, int, int>> e;
+    for (int i = 0; i < M; i++) {
+        ll A, B, C;
         cin >> A >> B >> C;
+
         A--;
         B--;
         dp[A][B] = C;
         dp[B][A] = C;
-        e[A][B] = true;
-        e[B][A] = true;
-    }
-
-    vector<vector<int>> via(N, vector<int>(N, -1));
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) via[i][j] = i;
+        e.push_back(make_tuple(A, B, C));
     }
 
     for (int k = 0; k < N; k++) {
-        for (int l = 0; l < N; l++) {
-            for (int m = 0; m < N; m++) {
-                if (dp[l][k] + dp[k][m] < dp[l][m]) {
-                    dp[l][m] = dp[l][k] + dp[k][m];
-                    via[l][m] = k;
-                }
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                dp[i][j] = min<ll>(dp[i][j], dp[i][k] + dp[k][j]);
             }
         }
     }
 
-    vector<vector<bool>> e2(N, vector<bool>(N, false));
+    int unuse = 0;
+    for (auto [A, B, C] : e) {
+        for (int i = 0; i < N; i++) {
+            if (i == A || i == B) continue;
+            if (dp[A][i] + dp[i][B] <= C) {
+                unuse++;
+                break;
+            }
+        }
+    }
 
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            printPath1_aux(i, j, via, e2);
-        }
-    }
-    int count = 0;
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            if (e2[i][j] != e[i][j]) count++;
-        }
-    }
-    cout << count / 2 << endl;
+    cout << unuse << endl;
 }

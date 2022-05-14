@@ -20,30 +20,21 @@ int main() {
     int W;
     cin >> W;
 
-    int ans = 1;
-    int ans_sum = 0;
-    vector<int> ans_vec;
-    while (1) {
-        ans_sum += ans;
-        ans_vec.push_back(ans);
-        ans_vec.push_back(ans_sum);
-        ans *= 2;
-        if (ans > W) break;
+    vector<int> ans;
+    for (int i = 1; i < 101; i++) {
+        ans.push_back(101 * i);
+        ans.push_back(1 * i);
+
+        if (101 * 101 * i > 1e6) continue;
+        ans.push_back(101 * 101 * i);
     }
 
-    vector<int> ans_final;
-    for (int i = 0; i < ans_vec.size(); i++) {
-        if (ans_vec[i] > 1e6) break;
-        ans_final.push_back(ans_vec[i]);
-    }
-
-    cout << ans_final.size() << endl;
-    for (int i = 0; i < ans_final.size(); i++) {
-        if (ans_final[i] > 1e6) break;
+    cout << ans.size() << endl;
+    for (int i = 0; i < ans.size(); i++) {
         if (i != 0) {
             cout << " ";
         }
-        cout << ans_final[i];
+        cout << ans[i];
     }
     cout << endl;
 }

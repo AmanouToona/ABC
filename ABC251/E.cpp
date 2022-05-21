@@ -22,16 +22,4 @@ int main() {
 
     vector<int> A(N);
     for (int i = 0; i < N; i++) cin >> A[i];
-
-    vector<vector<int>> dp(2, vector<int>(N, 1e16));
-    for (int i = 0; i < N; i++) {
-        dp[1][i] = 0;
-    }
-
-    dp[0][0] = A[N - 1];
-    dp[1][0] = A[0];
-    dp[1][1] = 1;
-
-    for (int i = 2; i < N; i++) {
-    }
 }

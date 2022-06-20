@@ -3,6 +3,7 @@ using namespace std;
 using ll = long long;
 using vi = vector<int>;
 using vii = vector<vector<int>>;
+#define mp(a, b) make_pair(a, b)
 
 ll pow_ll(ll x, ll y) {
     ll ret = 1;
@@ -14,77 +15,66 @@ ll pow_ll(ll x, ll y) {
     return ret;
 }
 
-class UnionFind {
-    vector<int> p, rank, member_size;
-
-   public:
-    UnionFind(int n) : p(n), rank(n, 0), member_size(n, 1) {
-        for (int i = 0; i < n; i++) {
-            p[i] = i;
-        }
-    }
-
-    int find(int x) {
-        if (p[x] == x) return x;
-        p[x] = find(p[x]);
-        return p[x];
-    }
-
-    void unite(int x, int y) {
-        x = find(x);
-        y = find(y);
-
-        if (x == y) return;
-
-        if (rank[x] <= rank[y]) {
-            p[x] = y;
-            member_size[y] += member_size[x];
-        } else {
-            p[y] = x;
-            member_size[x] += member_size[y];
-        }
-
-        if (rank[x] == rank[y]) {
-            rank[y]++;
-        }
-        return;
-    }
-
-    int same(int x, int y) { return find(x) == find(y); }
-
-    int size(int x) { return member_size[find(x)]; }
-};
-
 int const INF = INT_MAX;
 
 int main() {
     int N, M;
     cin >> N >> M;
 
-    vector<pair<int, pair<int, int>>> edge;
+    vector<vector<int>> edge(N + 1, vector<int>());
+    map<pair<int, int>, int> cost;
     map<pair<int, int>, int> m;
+
     for (int i = 0; i < M; i++) {
         int a, b, c;
         cin >> a >> b >> c;
-        edge.push_back(make_pair(c, make_pair(a, b)));
 
-        m[make_pair(a, b)] = i + 1;
+        edge[a].push_back(b);
+        edge[b].push_back(a);
+
+        cost[mp(a, b)] = -c;
+        cost[mp(b, a)] = -c;
+
+        m[mp(a, b)] = i + 1;
+        m[mp(b, a)] = i + 1;
     }
 
-    sort(edge.begin(), edge.end(),
-         [&](pair<int, pair<int, int>> i, pair<int, pair<int, int>> j) -> bool {
-             return i.first < j.first;
-         });
+    priority_queue<pair<float, pair<int, int>>> q;
+    for (int v : edge[1]) {
+        q.push(mp(cost[mp(1, v)], mp(1, v)));
+    }
 
-    UnionFind uf(N + 1);
+    vector<bool> fp(N + 1, false);
+    fp[1] = true;
     vector<int> ans;
-    for (auto [c, e] : edge) {
-        int a = e.first;
-        int b = e.second;
+    int count = 0;
 
-        if (uf.same(a, b)) continue;
-        uf.unite(a, b);
-        ans.push_back(m[make_pair(a, b)]);
+    while (!q.empty()) {
+        auto [c, e] = q.top();
+        q.pop();
+        count++;
+
+        auto [parent, u] = e;
+        if (fp[u]) continue;
+        fp[u] = true;
+
+        if (u < parent) {
+            ans.push_back(m[mp(u, parent)]);
+        } else {
+            ans.push_back(m[mp(parent, u)]);
+        }
+
+        for (int v : edge[u]) {
+            if (fp[v]) continue;
+            int c;
+            if (v < u) {
+                c = cost[mp(v, u)];
+            } else {
+                c = cost[mp(u, v)];
+            }
+
+            q.push(mp(c - count * 0.00001, mp(u, v)));
+        }
     }
 
     for (int i = 0; i < N - 1; i++) {

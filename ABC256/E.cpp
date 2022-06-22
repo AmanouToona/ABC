@@ -33,26 +33,18 @@ int main() {
         if (state[i] != 0) continue;
 
         vector<int> vs;
-        auto dfs = [&](auto f, int u) {
-            state[u] = 1;
+        auto dfs = [&](auto f, int v) {
+            if (state[v] == 2) return -1;
+            if (state[v] == 1) return v;
 
-            int v = X[u];
-            if (state[v] == 2) {
-                state[u] = 2;
-                return -1;
-            }
-            if (state[v] == 1) {
-                state[u] = 2;
-                vs.push_back(C[u]);
-                return v;
-            }
+            state[v] = 1;
+            int r = f(f, X[v]);
 
-            int loop_point = f(f, v);
-            state[u] = 2;
-            if (loop_point == -1) return -1;
-            vs.push_back(C[u]);
-            if (loop_point == u) return -1;
-            return loop_point;
+            state[v] = 2;
+            if (r == -1) return -1;
+            vs.push_back(C[v]);
+            if (r == v) return -1;
+            return r;
         };
 
         dfs(dfs, i);

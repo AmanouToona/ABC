@@ -45,7 +45,7 @@ def is_touch(c1, c2):
 
     d2 = (x1 - x2) ** 2 + (y1 - y2) ** 2
 
-    if (r1 + r2) ** 2 > d2:
+    if (r1 + r2) ** 2 < d2:
         return False
 
     if d2 < (max(r1, r2) - min(r1, r2)) ** 2:

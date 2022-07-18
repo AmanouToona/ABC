@@ -16,4 +16,11 @@ ll pow_ll(ll x, ll y) {
 
 int const INF = INT_MAX;
 
-int main() {}
+int main() {
+    int N, X;
+    cin >> N >> X;
+
+    char ans = 'A';
+    ans += (X - 1) / N;
+    cout << ans << endl;
+}

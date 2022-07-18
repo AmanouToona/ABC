@@ -2,7 +2,7 @@
 using namespace std;
 using ll = long long;
 using vi = vector<int>;
-using vii = vector<vector<int>>;
+using vvi = vector<vector<int>>;
 
 ll pow_ll(ll x, ll y) {
     ll ret = 1;

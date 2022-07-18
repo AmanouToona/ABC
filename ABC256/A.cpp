@@ -2,7 +2,7 @@
 using namespace std;
 using ll = long long;
 using vi = vector<int>;
-using vvi = vector<vector<int>>;
+using vii = vector<vector<int>>;
 
 ll pow_ll(ll x, ll y) {
     ll ret = 1;
@@ -16,4 +16,10 @@ ll pow_ll(ll x, ll y) {
 
 int const INF = INT_MAX;
 
-int main() {}
+int main() {
+    ll N;
+    cin >> N;
+
+    ll ans = pow_ll(2, N);
+    cout << ans << endl;
+}

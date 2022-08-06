@@ -5,43 +5,23 @@ def main():
     N, L, R = map(int, sys.stdin.readline().strip().split())
     A = list(map(int, sys.stdin.readline().strip().split()))
 
-    # 置き換えないパターン
-    a_sum = sum(A)
+    cum = [0]
+    for a in A:
+        cum.append(cum[-1] + a)
 
-    # 全部 L パターン
-    ans = min(a_sum, L * N)
+    # cumy = cum[y] - Ry
+    cumy = cum.copy()
+    for i in range(len(cumy)):
+        cumy[i] -= R * i
 
-    # 全部 R パターン
-    ans = min(ans, R * N)
+    # cumy = 累積min (cumy)
+    for i in range(len(cumy) - 1, 0, -1):
+        cumy[i - 1] = min(cumy[i - 1], cumy[i])
 
-    # L, R で置き換えるパターン
-    back_cusum = A.copy()
-    for i in range(N - 1, 0, -1):
-        back_cusum[i - 1] += back_cusum[i]
-
-    # L で置き換える
-    changed_l = [a_sum]
-    for l_pos in range(1, N + 1):
-        changed_l.append(changed_l[-1] + L - A[l_pos - 1])
-
-    left_pos = 0
-    changed_l_min = changed_l[0]
-    for i, val in enumerate(changed_l):
-        if val < changed_l_min:
-            left_pos = i
-        changed_l_min = min(changed_l_min, val)
-
-    Led_A = A.copy()
-    for i in range(left_pos):
-        Led_A[i] = L
-
-    # R で置き換える
-    Led_A = list(reversed(Led_A))
-    changed_r = [sum(Led_A)]
-    for r_pos in range(1, N + 1):
-        changed_r.append(changed_r[-1] + R - Led_A[r_pos - 1])
-
-    ans = min(ans, min(changed_r))
+    ans = float("inf")
+    for x in range(N + 1):
+        _ans = R * N + L * x - cum[x] + cumy[x]
+        ans = min(ans, _ans)
 
     print(ans)
 

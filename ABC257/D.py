@@ -36,7 +36,7 @@ def main():
         return all(used)
 
     left = 0
-    right = 2 * 10 ** 9 + 1
+    right = 4 * 10 ** 9 + 1
     while right - left > 1:
         mid = (right + left) // 2
 

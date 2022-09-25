@@ -4,51 +4,52 @@ sys.setrecursionlimit(10**8)
 
 
 def main():
-    N, K = map(int, sys.stdin.readline().strip().split())
+    _, K = map(int, sys.stdin.readline().strip().split())
     A = list(map(int, sys.stdin.readline().strip().split()))
 
-    b = [(a, i) for i, a in enumerate(A)]
+    left = 0
+    right = 10**12 + 1
 
-    A.sort()
+    while right - left > 1:
+        mid = (right + left) // 2
 
-    i = 0
-    cycle = 0
-    while K > 0:
-        r = 0
-        if i > 0:
-            r = A[i - 1]
+        sum_a = 0
+        for a in A:
+            if a <= mid:
+                sum_a += a
+            else:
+                sum_a += mid
 
-        if K < N * (A[i] - r):
-            cycle += K // N
-            K -= (K // N) * N
+        if sum_a >= K:
+            right = mid
+        else:
+            left = mid
 
-            break
+    ans = []
+    tot = 0
+    for a in A:
+        if a < left:
+            ans.append(0)
+            tot += a
+        else:
+            ans.append(a - left)
+            tot += left
 
-        if A[i] - r:
-            i += 1
+    for i, a in enumerate(ans):
+        if a == 0:
             continue
 
-        K -= N * (A[i] - r)
-        cycle = A[i]
-        N -= 1
-        i += 1
-
-    ans = [0] * len(b)
-    for val, key in b:
-        ans[key] = val
-
-    for i in range(N):
-        if ans[i] < cycle:
-            ans[i] = 0
-            continue
-        ans[i] -= cycle
-        if K > 0 and ans[i] > 0:
+        if a > 0:
             ans[i] -= 1
-            K -= 1
+            tot += 1
+
+        if tot == K:
+            break
 
     ans = [f"{a}" for a in ans]
     ans = " ".join(ans)
     print(ans)
+
     return
 
 

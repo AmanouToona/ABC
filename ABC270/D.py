@@ -6,23 +6,25 @@ sys.setrecursionlimit(10**8)
 def main():
     N, _ = map(int, sys.stdin.readline().strip().split())
     A = list(map(int, sys.stdin.readline().strip().split()))
-    A = list(reversed(A))
 
-    a = 0
-    taka = 1
-    ans = 0
-    while N > 0:
-        while A[a] > N:
-            a += 1
+    dp = [-1] * (10**4 + 1)
+    dp[0] = 0
 
-        if taka:
-            ans += A[a]
+    def stone(n):
+        if dp[n] != -1:
+            return dp[n]
 
-        N -= A[a]
+        ans = float("inf")
+        for a in A:
+            if n - a >= 0:
+                ans = min(ans, stone(n - a))
 
-        taka = 1 - taka
+        dp[n] = n - ans
+        return dp[n]
 
-    print(ans)
+    stone(N)
+
+    print(dp[N])
 
     return
 

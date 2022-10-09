@@ -13,18 +13,13 @@ def main():
         if a > N:
             continue
 
-        if a >= 0:
-            start = 0
-        else:
-            start = ceil(-a / (i + 1))
-
         start = max(0, ceil(-a / (i + 1)) - 1)
-
-        end = ceil((N - a) / (i + 1))
-        end = min(end, M)
-
-        for j in range(start, end):
-            check[j].append(a + (i + 1) * (j + 1))
+        a_ = a + start * (i + 1)
+        j = start
+        while a_ + (i + 1) < N and j < M:
+            a_ += i + 1
+            check[j].append(a_)
+            j += 1
 
     for c in check:
         search = [False] * (len(c) + 1)

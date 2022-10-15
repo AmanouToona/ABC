@@ -5,36 +5,65 @@ from collections import defaultdict
 sys.setrecursionlimit(10 ** 8)
 
 
+class Node:
+    def __init__(self, val, prev=None) -> None:
+        self.val = val
+        self.prev = prev
+
+
+class Tree:
+    def __init__(self) -> None:
+        self.root = Node("-1")
+        self.now = self.root
+
+    def add(self, val):
+        new = Node(val, self.now)
+        self.now = new
+        return
+
+    def delete(self):
+        if self.now.prev:
+            self.now = self.now.prev
+        return
+
+    def get_pos(self):
+        return self.now
+
+    def load(self, new):
+        self.now = new
+        return
+
+    def get_tail(self):
+        return self.now.val
+
+    def get_root(self):
+        return self.root
+
+
 def main():
     Q = int(sys.stdin.readline().strip())
 
-    A = []
-    note = defaultdict(list)
+    tree = Tree()
     ans = []
-    pos = -1
+    note = defaultdict(tree.get_root)
     for _ in range(Q):
-        q, *n = sys.stdin.readline().strip().split()
-        if n:
-            n = n[0]
+        q = sys.stdin.readline().strip().split()
+
+        if len(q) == 2:
+            n = q[1]
+
+        q = q[0]
 
         if q == "ADD":
-            if pos + 1 < len(A):
-                A[pos + 1] = n
-            else:
-                A.append(n)
-            pos += 1
-        elif q == "DELETE" and A:
-            pos = max(-1, pos - 1)
+            tree.add(n)
+        elif q == "DELETE":
+            tree.delete()
         elif q == "SAVE":
-            note[n] = A
+            note[n] = tree.get_pos()
         elif q == "LOAD":
-            A = note[n]
-            pos = len(A) - 1
+            tree.load(note[n])
 
-        if pos >= 0:
-            ans.append(A[pos])
-        else:
-            ans.append("-1")
+        ans.append(tree.get_tail())
 
     print(" ".join(ans))
 

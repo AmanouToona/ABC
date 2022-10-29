@@ -51,15 +51,21 @@ def main():
             dist2 = (pown4[0][0] - pown4[1][0]) ** 2 + (pown4[0][1] - pown4[1][1]) ** 2
 
             # 1, 2
-            if (pown4[1][0] - pown4[2][0]) ** 2 + (pown4[1][1] - pown4[2][1]) ** 2 != dist2:
+            if (pown4[1][0] - pown4[2][0]) ** 2 + (
+                pown4[1][1] - pown4[2][1]
+            ) ** 2 != dist2:
                 continue
 
             # 2, 3
-            if (pown4[2][0] - pown4[3][0]) ** 2 + (pown4[2][1] - pown4[3][1]) ** 2 != dist2:
+            if (pown4[2][0] - pown4[3][0]) ** 2 + (
+                pown4[2][1] - pown4[3][1]
+            ) ** 2 != dist2:
                 continue
 
             # 3, 0
-            if (pown4[3][0] - pown4[0][0]) ** 2 + (pown4[3][1] - pown4[0][1]) ** 2 != dist2:
+            if (pown4[3][0] - pown4[0][0]) ** 2 + (
+                pown4[3][1] - pown4[0][1]
+            ) ** 2 != dist2:
                 continue
 
             ans += 1

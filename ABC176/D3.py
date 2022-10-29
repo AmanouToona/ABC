@@ -20,7 +20,7 @@ for _ in range(H):
 # solve
 q = []
 heapq.heappush(q, (0, (Ch, Cw)))
-fp = [[float('inf')] * W for _ in range(H)]
+fp = [[float("inf")] * W for _ in range(H)]
 fp[Ch][Cw] = 0
 while q:
     count, coo = heapq.heappop(q)
@@ -78,7 +78,7 @@ while q:
             heapq.heappush(q, (fp[uh][uw] + 1, (vh, vw)))
 
 
-if fp[Dh][Dw] == float('inf'):
+if fp[Dh][Dw] == float("inf"):
     print(-1)
 else:
     print(fp[Dh][Dw])

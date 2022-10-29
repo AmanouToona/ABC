@@ -1,4 +1,5 @@
 import sys
+
 sys.setrecursionlimit(10 ** 9)
 
 N = int(input())
@@ -9,7 +10,7 @@ for n in range(N):
 
     B_sum = B * (B + 1) // 2
     A_sum = (A - 1) * A // 2
-    
+
     ans += B_sum - A_sum
 
 print(ans)

@@ -9,7 +9,7 @@ for _ in range(N):
     C.append(c)
     A.append(a)
 
-ans = float('inf')
+ans = float("inf")
 
 for i in range(2 ** N):
     bit = [(i >> j) & 1 for j in range(N)]  # 本を購入するかしないか
@@ -24,7 +24,7 @@ for i in range(2 ** N):
         cost = [c * b for c, b in zip(C, bit)]
         ans = min(sum(cost), ans)
 
-if ans == float('inf'):
+if ans == float("inf"):
     print(-1)
 else:
     print(ans)

@@ -3,7 +3,7 @@ import sys
 N = int(input())
 
 count = 0
-ans = 'No'
+ans = "No"
 for _ in range(N):
     D1, D2 = map(int, sys.stdin.readline().strip().split())
 
@@ -13,8 +13,7 @@ for _ in range(N):
         count = 0
 
     if count >= 3:
-        ans = 'Yes'
+        ans = "Yes"
         break
 
 print(ans)
-

@@ -1,4 +1,5 @@
 import sys
+
 sys.setrecursionlimit(10 ** 9)
 
 N = int(input())
@@ -7,6 +8,7 @@ point = []
 for n in range(N):
     x, y = map(int, sys.stdin.readline().strip().split())
     point.append((x, y))
+
 
 def solve(p1, p2, p3):
     v1 = (p1[0] - p2[0], p1[1] - p2[1])
@@ -32,7 +34,7 @@ for i in range(N):
     for j in range(i + 1, N):
         for k in range(j + 1, N):
             if solve(point[i], point[j], point[k]):
-                print('Yes')
+                print("Yes")
                 sys.exit()
 
-print('No')
+print("No")

@@ -5,6 +5,6 @@ K = int(input())
 A, B = map(int, sys.stdin.readline().strip().split())
 
 if B >= math.ceil(A / K) * K:
-    print('OK')
+    print("OK")
 else:
-    print('NG')
+    print("NG")

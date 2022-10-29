@@ -27,7 +27,7 @@ if ans != 0:
     print(ans)
     sys.exit()
 
-ans = -10 ** 10
+ans = -(10 ** 10)
 for x, y in road:
     ans = max(ans, A[y] - A[x])
 print(ans)

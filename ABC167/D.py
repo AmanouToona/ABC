@@ -1,4 +1,5 @@
 import sys
+
 sys.setrecursionlimit(2 * 10 ** 5)
 
 N, K = map(int, sys.stdin.readline().strip().split())
@@ -14,14 +15,14 @@ def search(town=0):
     if town not in town_set:
         town_line.append(town)
         town_set.add(town)
-        search(town=A[town]-1)
+        search(town=A[town] - 1)
     else:
         last_town = town
         return
 
 
 search(0)
-town_loop = town_line[town_line.index(last_town):]
+town_loop = town_line[town_line.index(last_town) :]
 
 if K < len(town_line):
     print(town_line[K] + 1)

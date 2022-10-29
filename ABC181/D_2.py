@@ -1,4 +1,5 @@
 import sys
+
 sys.setrecursionlimit(10 ** 9)
 
 
@@ -12,14 +13,14 @@ for i in range(1, 1000):
     can_make = True
     if i % 8 != 0:
         continue
-    if i <= 99 and len(S) >=3:
+    if i <= 99 and len(S) >= 3:
         continue
     if i <= 9 and len(S) >= 2:
         continue
 
     mini_bucket = [0] * 9
     for j in str(i):
-        if j == '0':
+        if j == "0":
             can_make = False
             break
         mini_bucket[int(j) - 1] += 1
@@ -33,7 +34,7 @@ for i in range(1, 1000):
             break
 
     if can_make:
-        print('Yes')
+        print("Yes")
         sys.exit()
 
-print('No')
+print("No")

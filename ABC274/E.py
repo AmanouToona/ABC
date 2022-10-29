@@ -1,7 +1,7 @@
 import sys
 from math import sqrt
 
-sys.setrecursionlimit(10**8)
+sys.setrecursionlimit(10 ** 8)
 
 
 def get_dist(point1, point2):

@@ -11,4 +11,3 @@ elif N <= 211:
     print(6)
 elif N <= 214:
     print(8)
-

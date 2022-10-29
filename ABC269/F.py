@@ -1,6 +1,6 @@
 import sys
 
-sys.setrecursionlimit(10**8)
+sys.setrecursionlimit(10 ** 8)
 
 MOD = 998244353
 

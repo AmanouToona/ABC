@@ -1,10 +1,10 @@
 import sys
 import math
 
-N, M = map(int ,sys.stdin.readline().strip().split())
+N, M = map(int, sys.stdin.readline().strip().split())
 
 
-class UnionFind():
+class UnionFind:
     def __init__(self, n):
         self.n = n
         self.parents = [-1] * n

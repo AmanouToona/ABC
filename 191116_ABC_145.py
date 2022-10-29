@@ -51,6 +51,7 @@ print(sum(distance) / count)
 
 # D
 import sys
+
 sys.setrecursionlimit(100000)
 
 hash_no = 10 ** 9 + 7
@@ -86,5 +87,5 @@ def main():
         print(counter % hash_no)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

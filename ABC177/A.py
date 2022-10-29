@@ -4,6 +4,6 @@ import math
 D, T, S = map(int, sys.stdin.readline().strip().split())
 
 if D > T * S:
-    print('No')
+    print("No")
 else:
-    print('Yes')
+    print("Yes")

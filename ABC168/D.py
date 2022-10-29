@@ -5,8 +5,8 @@ N, M = map(int, sys.stdin.readline().strip().split())
 G = [[] for _ in range(N)]
 for m in range(M):
     a, b = map(int, sys.stdin.readline().strip().split())
-    G[a-1].append(b-1)
-    G[b-1].append(a-1)
+    G[a - 1].append(b - 1)
+    G[b - 1].append(a - 1)
 
 # print(G)
 # みんな大好き　ダイクストラ
@@ -15,7 +15,7 @@ c = [False] * N
 heapq.heappush(d, (0, 0))
 p = [N] * N  # 親を保存するリスト　親ノードとしてあり得ない N を初期値にした
 
-mindist = [float('inf')] * N
+mindist = [float("inf")] * N
 mindist[0] = 0
 
 while d:
@@ -31,10 +31,8 @@ while d:
 # print(p)
 # 答える
 if N in set(p[1:]):
-    print('No')
+    print("No")
 else:
-    print('Yes')
+    print("Yes")
     for i in p[1:]:
         print(i + 1)
-
-

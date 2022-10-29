@@ -10,12 +10,12 @@ count = 0
 for i in range(len(c)):
     if not left[1]:
         left[0] += 1
-        if c[left[0]] == 'W':
+        if c[left[0]] == "W":
             left[1] = True
 
     if not right[1]:
         right[0] -= 1
-        if c[right[0]] == 'R':
+        if c[right[0]] == "R":
             right[1] = True
 
     if left[1] and right[1]:
@@ -37,4 +37,3 @@ for i in range(len(c)):
     #     right = None
 
 print(count)
-

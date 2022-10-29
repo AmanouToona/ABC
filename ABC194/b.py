@@ -23,4 +23,3 @@ else:
     ans = max(a_min, ab[0][1])
 
 print(ans)
-

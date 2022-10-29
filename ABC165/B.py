@@ -17,4 +17,3 @@ while right - left != 1:
     else:
         left = mid
 print(right)
-

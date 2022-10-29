@@ -1,9 +1,10 @@
 import sys
+
 sys.setrecursionlimit(10 ** 9)
 
 N = int(input())
 
 if N % 2 == 0:
-    print('White')
+    print("White")
 else:
-    print('Black')
+    print("Black")

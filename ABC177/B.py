@@ -23,5 +23,3 @@ else:
         ans = min(ans, change)
 
 print(ans)
-
-

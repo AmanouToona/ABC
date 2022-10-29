@@ -15,7 +15,7 @@ for h in range(H):
             if table[h][w].islower():
                 warp[table[h][w]].append((h, w))
 
-            elif table[h][w] == 'S':
+            elif table[h][w] == "S":
                 start = (0, h, w)
             else:
                 goal = (h, w)

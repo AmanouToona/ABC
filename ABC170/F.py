@@ -22,7 +22,7 @@ def bfs(x1, y1, d):
                     break
                 if y2 < 0 or y2 >= W:  # 枠外
                     break
-                if m[x2][y2] == '@':  # 蓮の葉
+                if m[x2][y2] == "@":  # 蓮の葉
                     break
                 if M[x2][y2] < d + 1:  # より良い経路を探索済み。
                     break
@@ -44,6 +44,6 @@ m = []
 for _ in range(H):
     m.append(list(map(str, sys.stdin.readline().strip())))
 
-M = [[float('inf')] * W for _ in range(H)]
+M = [[float("inf")] * W for _ in range(H)]
 
 bfs(xs - 1, ys - 1, 0)

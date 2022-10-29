@@ -24,4 +24,3 @@ for i in A:
         j += i
 
 print(sum(ans))
-

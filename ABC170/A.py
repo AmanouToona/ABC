@@ -8,4 +8,3 @@ for i in origin:
         ans = i
         print(ans)
         break
-

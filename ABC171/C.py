@@ -2,8 +2,34 @@ import sys
 
 N = int(input())
 
-alpha = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',
-         'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+alpha = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+]
 
 ans = []
 for I in range(12):
@@ -21,6 +47,5 @@ for I in range(12):
         ans.append(alpha[int(n - 1)])
     else:
         if ans:
-            ans.append('a')
-print(''.join(ans))
-
+            ans.append("a")
+print("".join(ans))

@@ -30,6 +30,3 @@ while k <= 10 ** 37:
         sys.exit()
 
 print(-1)
-
-
-

@@ -1,13 +1,13 @@
 import sys
 
-sys.setrecursionlimit(10**8)
+sys.setrecursionlimit(10 ** 8)
 
 
 def main():
     N, _ = map(int, sys.stdin.readline().strip().split())
     A = list(map(int, sys.stdin.readline().strip().split()))
 
-    dp = [-1] * (10**4 + 1)
+    dp = [-1] * (10 ** 4 + 1)
     dp[0] = 0
 
     def stone(n):

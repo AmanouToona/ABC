@@ -1,4 +1,5 @@
 import sys
+
 sys.setrecursionlimit(10 ** 9)
 
 N, K = map(int, sys.stdin.readline().strip().split())
@@ -33,4 +34,3 @@ def search(u, tot_time):
 search(0, 0)
 
 print(ans.count(K))
-

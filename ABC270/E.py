@@ -1,6 +1,6 @@
 import sys
 
-sys.setrecursionlimit(10**8)
+sys.setrecursionlimit(10 ** 8)
 
 
 def main():
@@ -8,7 +8,7 @@ def main():
     A = list(map(int, sys.stdin.readline().strip().split()))
 
     left = 0
-    right = 10**12 + 1
+    right = 10 ** 12 + 1
 
     while right - left > 1:
         mid = (right + left) // 2

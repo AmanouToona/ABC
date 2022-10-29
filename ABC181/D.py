@@ -1,4 +1,5 @@
 import sys
+
 sys.setrecursionlimit(10 ** 9)
 
 #
@@ -50,7 +51,7 @@ for i in range(1000000):
 
         mini_bucket = [0] * 9
         for j in str(i):
-            if j == '0':
+            if j == "0":
                 can_make = False
                 break
             mini_bucket[int(j) - 1] += 1
@@ -65,10 +66,9 @@ for i in range(1000000):
 
         # if can_make:
         #     print('Yes')
-            # sys.exit()
+        # sys.exit()
 
-    # print('No')
+        # print('No')
 
         if can_make and i % 8 != 0:
-            print(i, 'is not')
-
+            print(i, "is not")

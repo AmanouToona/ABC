@@ -6,4 +6,4 @@ S = str(input())
 if len(S) <= K:
     print(S)
 else:
-    print(S[:K], '...', sep='')
+    print(S[:K], "...", sep="")

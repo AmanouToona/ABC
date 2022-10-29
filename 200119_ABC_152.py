@@ -43,4 +43,3 @@ print(ans)
 n = int(input())
 print(len(str(n)))
 print(int(str(n)[0]))
-

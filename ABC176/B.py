@@ -5,9 +5,8 @@ N = str(input())
 n = list(map(int, N))
 
 if sum(n) == 0:
-    print('Yes')
+    print("Yes")
 elif sum(n) % 9 != 0:
-    print('No')
+    print("No")
 else:
-    print('Yes')
-
+    print("Yes")

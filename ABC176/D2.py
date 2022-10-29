@@ -20,7 +20,7 @@ for _ in range(H):
 # solve
 q = queue.Queue()
 q.put((Ch, Cw))
-fp = [[float('inf')] * W for _ in range(H)]
+fp = [[float("inf")] * W for _ in range(H)]
 fp[Ch][Cw] = 0
 while True:
     if q.empty():
@@ -76,7 +76,7 @@ while True:
             fp[vh][vw] = fp[uh][uw] + 1
 
 
-if fp[Dh][Dw] == float('inf'):
+if fp[Dh][Dw] == float("inf"):
     print(-1)
 else:
     print(fp[Dh][Dw])

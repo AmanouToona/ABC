@@ -9,8 +9,8 @@ for i in range(1, N):
         ans += N - 1
         continue
 
-    if i * 2  + 1 <= N:
-        ans += (N - 1) // i 
+    if i * 2 + 1 <= N:
+        ans += (N - 1) // i
     else:
         ans += N - i
         break

@@ -1,6 +1,6 @@
 import sys
 
-sys.setrecursionlimit(10**8)
+sys.setrecursionlimit(10 ** 8)
 
 
 def pow(x, y, mod=None):

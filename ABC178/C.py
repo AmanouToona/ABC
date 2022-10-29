@@ -12,4 +12,3 @@ if N <= 1:
 # ans = comb(N, 2, exact=True) * 2 * (8 ** (N - 2)) + (9 ** N - 8 ** N) * 2
 ans = 10 ** N - 8 ** N - (9 ** N - 8 ** N) * 2
 print(ans % mod)
-

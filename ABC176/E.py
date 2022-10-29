@@ -42,4 +42,3 @@ for ih in index_h:
             print(ans)
             exit()
 print(ans - 1)
-

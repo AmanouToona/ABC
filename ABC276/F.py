@@ -1,5 +1,7 @@
 import sys
 
+MOD = 998244353
+
 
 def pow(x, y, mod=998244353):
 
@@ -36,11 +38,11 @@ class SegmentTree:
 
     def update(self, i: int, x: int):
         i += self.n - 1
-        self.data[i] = x
+        self.data[i] += x
 
         while i > 0:
             i = (i - 1) // 2
-            self.data[i] = self.data[i * 2 + 1] + self.data[i * 2 + 2]
+            self.data[i] = (self.data[i * 2 + 1] + self.data[i * 2 + 2]) % MOD
         return
 
     def query(self, a: int, b: int):
@@ -52,7 +54,7 @@ class SegmentTree:
         # [left, right): 探索範囲
 
         if b <= left or a >= right:
-            return float("inf")
+            return 0
 
         if a <= left and right <= b:
             return self.data[k]
@@ -60,39 +62,31 @@ class SegmentTree:
         value_left = self._query(a, b, k * 2 + 1, left, (left + right) // 2)
         value_right = self._query(a, b, k * 2 + 2, (left + right) // 2, right)
 
-        return value_left + value_right
-
-
-sys.setrecursionlimit(10 ** 8)
-
-MOD = 998244353
+        return (value_left + value_right) % MOD
 
 
 def main():
     _ = int(input())
     A = list(map(int, sys.stdin.readline().strip().split()))
-
-    seg = SegmentTree(max(A) + 1)
+    maA = max(A)
+    seg1 = SegmentTree(maA + 2)
+    seg2 = SegmentTree(maA + 2)
 
     E = 0
     for k, a in enumerate(A):
+
+        ans = (E * k * k) % MOD + 2 * (seg1.query(0, a) * a + seg2.query(a, maA + 1)) % MOD + a
+
         inv = pow(k + 1, MOD - 2)
-        inv *= inv
-        inv %= MOD
+        ans = (ans * inv) % MOD
+        ans = (ans * inv) % MOD
+        ans = int(ans)
 
-        x = (k - 1) ** 2 * inv
-        x %= MOD
+        seg1.update(a, 1)
+        seg2.update(a, a)
 
-        z = A[k] * inv
-
-        y = seg.query(0, a) * a + E * (k - seg(0, a))
-
-
-        E = x + y + z
-        E %= MOD
+        E = ans
         print(E)
-
-    return
 
 
 if __name__ == "__main__":

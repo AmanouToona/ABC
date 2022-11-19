@@ -26,6 +26,33 @@ def pow(x, y, mod=998244353):
     return res
 
 
+class BinaryIndexedTree:
+    # 1-index
+    def __init__(self, n: int) -> None:
+        x = 1
+        while x <= n:
+            x <<= 1
+
+        self.n = x
+        self.data = [0] * (self.n + 1)
+        return
+
+    def update(self, i: int, x: int):
+        while i <= self.n:
+            self.data[i] += x
+            i += i & -i
+        return
+
+    def query(self, a: int):
+        res = 0
+
+        while a:
+            res += self.data[a]
+            a -= a & -a
+
+        return res
+
+
 class SegmentTree:
     def __init__(self, n: int) -> None:
         x = 1
@@ -39,6 +66,7 @@ class SegmentTree:
     def update(self, i: int, x: int):
         i += self.n - 1
         self.data[i] += x
+        self.data[i] %= MOD
 
         while i > 0:
             i = (i - 1) // 2
@@ -69,13 +97,16 @@ def main():
     _ = int(input())
     A = list(map(int, sys.stdin.readline().strip().split()))
     maA = max(A)
-    seg1 = SegmentTree(maA + 2)
-    seg2 = SegmentTree(maA + 2)
+    seg1 = BinaryIndexedTree(maA)
+    seg2 = BinaryIndexedTree(maA)
 
+    seg1_ = SegmentTree(maA + 2)
+    seg2_ = SegmentTree(maA + 2)
     E = 0
     for k, a in enumerate(A):
 
-        ans = (E * k * k) % MOD + 2 * (seg1.query(0, a) * a + seg2.query(a, maA + 1)) % MOD + a
+        ans = (E * k * k) % MOD + 2 * (seg1.query(a - 1) * a + (seg2.query(maA) - seg2.query(a - 1))) % MOD + a
+        ans %= MOD
 
         inv = pow(k + 1, MOD - 2)
         ans = (ans * inv) % MOD
@@ -84,6 +115,9 @@ def main():
 
         seg1.update(a, 1)
         seg2.update(a, a)
+
+        seg1_.update(a, 1)
+        seg2_.update(a, a)
 
         E = ans
         print(E)

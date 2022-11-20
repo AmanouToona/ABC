@@ -23,13 +23,11 @@ def main():
 
     # O(300 ** 3)
     for n in range(N + 1):
-        for hi in range(H + 1):
-            for wi in range(W):
-                cusum[hi][wi + 1][n] += cusum[hi][wi][n]
-
         for hi in range(H):
-            for wi in range(W + 1):
-                cusum[hi + 1][wi][n] += cusum[hi][wi][n]
+            for wi in range(W):
+                cusum[hi + 1][wi + 1][n] = (
+                    cusum[hi][wi + 1][n] + cusum[hi + 1][wi][n] - cusum[hi][wi][n] + int(A[hi][wi] == n)
+                )
 
     # solve
     ans = [[0] * (W - w + 1) for _ in range(H - h + 1)]

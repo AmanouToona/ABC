@@ -1,4 +1,5 @@
 import sys
+from collections import deque
 
 sys.setrecursionlimit(10 ** 8)
 
@@ -7,48 +8,42 @@ def main():
     N, M = map(int, sys.stdin.readline().strip().split())
 
     g = [[] for _ in range(N)]
-    rg = [[] for _ in range(N)]
-    into = [0] * N
     edges = set()
     for _ in range(M):
         u, v = map(int, sys.stdin.readline().strip().split())
         u -= 1
         v -= 1
         g[u].append(v)
-        rg[v].append(u)
         edges.add((u, v))
 
-        into[v] += 1
+    global ans
+    ans = 0
 
-    global stack
-    stack = []
-    done = [False] * N
+    def bfs(p):
+        global ans
+        q = deque()
+        used = [False] * N
+        used[p] = True
 
-    def dfs(u):
-        global stack
-        done[u] = True
-        stack.append(u)
+        for u in g[p]:
+            q.append(u)
+            used[u] = True
 
-        for v in g[u]:
-            if done[v]:
-                continue
-            dfs(v)
+        while q:
+            u = q.popleft()
+            if (p, u) not in edges:
+                ans += 1
 
-    cnt = 0
+            for v in g[u]:
+                if used[v]:
+                    continue
+                q.append(v)
+                used[v] = True
 
-    for i, num in enumerate(into):
-        if num != 0:
-            continue
-        stack = []
+    for i in range(N):
+        bfs(i)
 
-        dfs(i)
-
-        for i in range(len(stack)):
-            for j in range(i + 1, len(stack)):
-                if (stack[i], stack[j]) not in edges:
-                    cnt += 1
-
-    print(cnt)
+    print(ans)
 
     return
 

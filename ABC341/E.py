@@ -22,6 +22,9 @@ class SegmentTree:
             self.data[i] = self.data[i * 2 + 1] + self.data[i * 2 + 2]
         return
 
+    def get(self, x):
+        return self.data[x + self.n - 1]
+
     def query(self, a: int, b: int):
         return self._query(a, b, 0, 0, self.n)
 
@@ -61,12 +64,12 @@ def main():
 
         if q == 1:
             if L != 0:
-                seg.update(L, 1 - seg.query(L, L + 1))
+                seg.update(L, 1 - seg.get(L))
             if R + 1 <= len(S) - 1:
-                seg.update(R + 1, 1 - seg.query(R + 1, R + 2))
+                seg.update(R + 1, 1 - seg.get(R + 1))
 
         else:
-            ans = seg.query(L, R + 1)
+            ans = seg.query(L + 1, R + 1)
             if ans == 0:
                 print("Yes")
             else:
